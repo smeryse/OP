@@ -1,0 +1,192 @@
+/* styles.css - исправленная версия с правильными полями */
+
+/* Базовые сбросы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Настройки для экрана - имитация листа А4 */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    padding: 20pt;
+    line-height: 1.4;
+}
+
+.document {
+    width: 210mm;
+    min-height: 297mm;
+    background-color: white;
+    box-shadow: 0 0 20pt rgba(0,0,0,0.2);
+    /* Поля: верх, право, низ, лево 
+       Сверху: 20мм (2см)
+       Справа: 15мм (1.5см)
+       Снизу: 20мм (2см)
+       Слева: 30мм (3см) — для подшивки */
+    padding: 20mm 15mm 20mm 30mm;
+    margin: 0 auto;
+    text-align: justify;
+    position: relative;
+    letter-spacing: 0pt;
+}
+
+/* Остальные стили */
+h1, h2, h3, .ministry, .university, .faculty, .department, 
+.title-main, .discipline, .topic, .city-year, .figcaption {
+    text-align: center;
+}
+
+.ministry {
+    font-size: 14pt;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.university {
+    font-size: 14pt;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1.2;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}
+
+.faculty, .department {
+    font-size: 14pt;
+    text-align: center;
+    margin: 0pt 0;
+    font-weight: bold;
+}
+
+.title-main {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    margin: 25pt 0 5pt;
+    text-transform: uppercase;
+}
+
+.discipline, .topic {
+    font-size: 15pt;
+    text-align: center;
+    margin: 2pt 0;
+    font-weight: normal;
+}
+
+.student-info {
+    text-align: right;
+    font-size: 14pt;
+    line-height: 1.4;
+    margin-top: 20pt;
+    margin-bottom: 20pt;
+}
+
+.student-info p {
+    margin: 2pt 0;
+    text-align: right;
+}
+
+.underline {
+    text-decoration: underline;
+    text-underline-offset: 2pt;
+}
+
+.signature-field {
+    display: inline-block;
+    min-width: 180pt;
+    border-bottom: 1pt solid #000;
+    margin: 0 5pt;
+    vertical-align: middle;
+}
+
+.signature-field-long {
+    width: 250pt;
+}
+
+.city-year {
+    text-align: center;
+    font-size: 14pt;
+    margin: 25pt 0 30pt;
+}
+
+.section-title {
+    font-size: 15pt;
+    font-weight: bold;
+    margin: 20pt 0 8pt;
+    text-align: left;
+}
+
+.section-text {
+    font-size: 14pt;
+    text-align: justify;
+    margin-bottom: 15pt;
+    text-indent: 1.5em;
+}
+
+.section-text.no-indent {
+    text-indent: 0;
+}
+
+.figure {
+    margin: 25pt 0;
+    text-align: center;
+}
+
+.figure-placeholder {
+    background-color: #e0e0e0;
+    border: 1pt dashed #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 150pt;
+    margin: 0 auto 10pt;
+    font-size: 14pt;
+    color: #444;
+    padding: 15pt;
+    border-radius: 4pt;
+    aspect-ratio: 5.92 / 4.70;
+}
+
+.figcaption {
+    font-size: 13pt;
+    font-style: italic;
+}
+
+p {
+    margin: 0 0 8pt;
+}
+
+hr {
+    border: none;
+    border-top: 1pt solid #ccc;
+    margin: 10pt 0;
+}
+
+/* Стили для печати */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .document {
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    @page {
+        size: A4;
+        margin: 20mm 15mm 20mm 30mm;
+    }
+}

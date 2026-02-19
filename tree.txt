@@ -1,0 +1,251 @@
+.
+├── 1. materials
+│   ├── 1. lectures
+│   │   ├── 1. formated
+│   │   ├── 2. original
+│   │   │   ├── 1 lecture.md
+│   │   │   └── 2 lecture.md
+│   │   └── Опеционные Системы - конспект лекций.pdf
+│   └── 2. labs
+│       ├── Вопросы ОС зачет.docx
+│       ├── ЛР10_Управление ПО.pdf
+│       ├── ЛР11_Загрузка системы и управление службами systemd.pdf
+│       ├── ЛР12_Управление устройствами и модулями Ядро ОС.pdf
+│       ├── ЛР13_Файловая система в Linux.pdf
+│       ├── ЛР1_Знакомство с операционной системой Linux.pdf
+│       ├── ЛР2_Работа с терминалом и оболочкой Bash.pdf
+│       ├── ЛР3_Работа с файлами и каталогами. FHS.pdf
+│       ├── ЛР4_Управление пользователями и группами.pdf
+│       ├── ЛР5_Работа с правами доступа, ACL.pdf
+│       ├── ЛР6_Работа со сценариями Bash.pdf
+│       ├── ЛР7_Работа с профилями пользователей.pdf
+│       ├── ЛР8_Процессы.pdf
+│       ├── ЛР9_Базовый комплекс средств защиты информации.pdf
+│       └── Тест_ИТОГ_ОС_Вариант_0.pdf
+├── 2. scripts
+│   ├── images
+│   │   ├── 10.png
+│   │   ├── 11.png
+│   │   ├── 12.png
+│   │   ├── 13.png
+│   │   ├── 14.png
+│   │   ├── 15.png
+│   │   ├── 16.png
+│   │   ├── 17.png
+│   │   ├── 18.png
+│   │   ├── 19.png
+│   │   ├── 1.png
+│   │   ├── 20.png
+│   │   ├── 21.png
+│   │   ├── 22.png
+│   │   ├── 23.png
+│   │   ├── 24.png
+│   │   ├── 25.png
+│   │   ├── 26.png
+│   │   ├── 27.png
+│   │   ├── 28.png
+│   │   ├── 29.png
+│   │   ├── 2.png
+│   │   ├── 3.png
+│   │   ├── 4.png
+│   │   ├── 5.png
+│   │   ├── 6.png
+│   │   ├── 7.png
+│   │   ├── 8.png
+│   │   └── 9.png
+│   ├── lab_prompt.txt
+│   ├── script
+│   │   ├── generate.py
+│   │   ├── gui.py
+│   │   └── __pycache__
+│   │       ├── generate.cpython-313.pyc
+│   │       └── gui.cpython-313.pyc
+│   ├── templates
+│   │   ├── base.html
+│   │   ├── content.html
+│   │   ├── header.html
+│   │   ├── image.html
+│   │   └── student_info.html
+│   └── tools.md
+├── 3. data
+│   ├── base_info.json
+│   ├── base_prompt.txt
+│   ├── lab1
+│   │   └── lab1.json
+│   ├── lab10
+│   ├── lab11
+│   ├── lab12
+│   ├── lab13
+│   ├── lab2
+│   ├── lab3
+│   │   ├── images
+│   │   │   ├── 10_1.png
+│   │   │   ├── 10.png
+│   │   │   ├── 11_1.png
+│   │   │   ├── 1_1.png
+│   │   │   ├── 11.png
+│   │   │   ├── 12_1.png
+│   │   │   ├── 12.png
+│   │   │   ├── 13_1.png
+│   │   │   ├── 13.png
+│   │   │   ├── 14_1.png
+│   │   │   ├── 14.png
+│   │   │   ├── 15_1.png
+│   │   │   ├── 15.png
+│   │   │   ├── 16_1.png
+│   │   │   ├── 16.png
+│   │   │   ├── 17_1.png
+│   │   │   ├── 17.png
+│   │   │   ├── 18_1.png
+│   │   │   ├── 18.png
+│   │   │   ├── 19_1.png
+│   │   │   ├── 19.png
+│   │   │   ├── 1.png
+│   │   │   ├── 20_1.png
+│   │   │   ├── 20.png
+│   │   │   ├── 21_1.png
+│   │   │   ├── 2_1.png
+│   │   │   ├── 21.png
+│   │   │   ├── 22_1.png
+│   │   │   ├── 22.png
+│   │   │   ├── 23_1.png
+│   │   │   ├── 23.png
+│   │   │   ├── 24_1.png
+│   │   │   ├── 24.png
+│   │   │   ├── 25_1.png
+│   │   │   ├── 25.png
+│   │   │   ├── 26_1.png
+│   │   │   ├── 26.png
+│   │   │   ├── 27_1.png
+│   │   │   ├── 27.png
+│   │   │   ├── 28_1.png
+│   │   │   ├── 28.png
+│   │   │   ├── 29_1.png
+│   │   │   ├── 29.png
+│   │   │   ├── 2.png
+│   │   │   ├── 3_1.png
+│   │   │   ├── 3.png
+│   │   │   ├── 4_1.png
+│   │   │   ├── 4.png
+│   │   │   ├── 5_1.png
+│   │   │   ├── 5.png
+│   │   │   ├── 6_1.png
+│   │   │   ├── 6.png
+│   │   │   ├── 7_1.png
+│   │   │   ├── 7.png
+│   │   │   ├── 8_1.png
+│   │   │   ├── 8.png
+│   │   │   ├── 9_1.png
+│   │   │   └── 9.png
+│   │   ├── lab3.html
+│   │   └── lab3.json
+│   ├── lab4
+│   │   ├── lab4.docx
+│   │   ├── lab4.html
+│   │   ├── lab4.json
+│   │   └── lab4.odt
+│   ├── lab5
+│   ├── lab6
+│   ├── lab7
+│   ├── lab8
+│   └── lab9
+├── 4. reports
+│   └── lab3.odt
+├── 5. tests
+│   ├── example.docx
+│   ├── example.odt
+│   ├── index-ninja2.html
+│   ├── index-var0.html
+│   ├── index-var1.html
+│   ├── index-var2.html
+│   ├── index-var3.html
+│   ├── index-var5.html
+│   ├── index-ver4.html
+│   ├── index-ver6.html
+│   ├── style.css
+│   ├── var2.odt
+│   ├── var3.odt
+│   ├── var.odt
+│   ├── ver4.odt
+│   └── ver5.odt
+├── 6. docs
+│   └── lab-last-year
+│       ├── example.docx
+│       ├── otchetOS10.docx
+│       ├── otchetOS11.docx
+│       ├── otchetOS12.docx
+│       ├── otchetOS1.docx
+│       ├── otchetOS2.docx
+│       ├── otchetOS3.docx
+│       ├── otchetOS4.docx
+│       ├── otchetOS5.docx
+│       ├── otchetOS6.docx
+│       ├── otchetOS7.docx
+│       ├── otchetOS8.docx
+│       └── otchetOS9.docx
+├── CHANGELOG.md
+├── README.md
+├── report_generator
+│   ├── cli
+│   │   └── main.py
+│   ├── config.py
+│   ├── core
+│   │   ├── image.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── image.cpython-312.pyc
+│   │   │   ├── image.cpython-313.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── renderer.cpython-312.pyc
+│   │   │   ├── renderer.cpython-313.pyc
+│   │   │   ├── report.cpython-312.pyc
+│   │   │   ├── report.cpython-313.pyc
+│   │   │   ├── text_processing.cpython-312.pyc
+│   │   │   └── text_processing.cpython-313.pyc
+│   │   ├── renderer.py
+│   │   ├── report_builder.py
+│   │   ├── report.py
+│   │   ├── schema.py
+│   │   └── text_processing.py
+│   ├── gui
+│   │   ├── app.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── app.cpython-312.pyc
+│   │       ├── app.cpython-313.pyc
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── __init__.cpython-313.pyc
+│   ├── __init__.py
+│   ├── io
+│   │   ├── __init__.py
+│   │   ├── json_loader.py
+│   │   ├── paths.py
+│   │   └── screenshot.py
+│   ├── llm
+│   │   ├── client.py
+│   │   ├── generator.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── client.cpython-312.pyc
+│   │   │   ├── client.cpython-313.pyc
+│   │   │   ├── generator.cpython-312.pyc
+│   │   │   ├── generator.cpython-313.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── text_extractor.cpython-312.pyc
+│   │   │   └── text_extractor.cpython-313.pyc
+│   │   ├── README.md
+│   │   └── text_extractor.py
+│   └── __pycache__
+│       ├── config.cpython-312.pyc
+│       ├── config.cpython-313.pyc
+│       ├── __init__.cpython-312.pyc
+│       └── __init__.cpython-313.pyc
+├── requirements.txt
+├── run.py
+├── run_report_gui.py
+├── TODO.md
+└── tree.txt
+
+40 directories, 209 files

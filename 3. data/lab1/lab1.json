@@ -1,0 +1,11 @@
+{
+    "lab": {
+        "number": 3,
+        "discipline": "Операционные системы",
+        "theme": "Работа с файлами и каталогами. FHS"
+    },
+    "goals": "...",
+    "procedure": [...],
+    "questions": [...],
+    "conclusion": "..."
+}
