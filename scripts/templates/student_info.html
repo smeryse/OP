@@ -1,0 +1,44 @@
+<!-- Информация о студенте -->
+<div style="margin: 0 auto; font-size: 14pt; line-height: 1.4; margin-top: 20pt; margin-bottom: 29pt;">
+    
+    {% if student.name %}
+    <p style="margin: 2pt 0; text-align: left; margin-bottom: 29pt;">
+        Работу выполнил: _____________________________ {{ student.name }}
+    </p>
+    {% endif %}
+    
+    {% if student.direction %}
+    <p style="margin: 2pt 0; text-align: left; line-height: 1.2; margin-bottom: 14pt;">
+        Направление подготовки: {{ student.direction }} 
+        {% if student.direction_name %}
+        <u style="text-decoration: underline; text-underline-offset: 2pt;">{{ student.direction_name }}</u>
+        {% endif %}
+    </p>
+    {% endif %}
+    
+    {% if student.profile %}
+    <p style="margin: 2pt 0; text-align: left; line-height: 1.2; margin-bottom: 28pt;">
+        Направленность (профиль): 
+        {% if student.profile_multiline %}
+            {# Для многострочного профиля #}
+            <u style="text-decoration: underline; text-underline-offset: 2pt;">{{ student.profile_line1 }}</u><br>
+            <u style="padding-left: 168pt; text-decoration: underline; text-underline-offset: 2pt;">{{ student.profile_line2 }}</u>
+        {% else %}
+            <u style="text-decoration: underline; text-underline-offset: 2pt;">{{ student.profile }}</u>
+        {% endif %}
+    </p>
+    {% endif %}
+    
+    {% if teacher.name %}
+    <p style="text-align: left;">
+        {{ teacher.position }}: ___________________________ {{ teacher.name }}
+    </p>
+    {% endif %}
+    
+</div>
+
+<!-- Город и год -->
+<div style="text-align: center; font-size: 14pt; margin-bottom: 40pt; line-height: 1.7;">
+    {{ location.city }}<br>
+    {{ location.year }}
+</div>

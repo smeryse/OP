@@ -1,0 +1,25 @@
+<!-- Рисунок {{ img.number }} -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        {% if img.src %}
+        <img src="{{ img.src }}" 
+             alt="{{ img.alt }}"
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        {% else %}
+        <span style="display: inline-block; 
+                     background: #f5f5f5; 
+                     padding: 15pt 30pt;
+                     border: 1px dashed #aaa;">
+            {{ img.alt }}
+        </span>
+        {% endif %}
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок {{ img.number }} – {{ img.caption }}
+    </div>
+    
+</div>

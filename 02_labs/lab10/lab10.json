@@ -1,0 +1,126 @@
+{
+  "lab": {
+    "number": 10,
+    "discipline": "Операционные системы",
+    "theme": "Управление ПО в Astra Linux"
+  },
+  "goals": "Цель работы: изучить исполняемые файлы ELF, структуру deb-пакетов, работу пакетных менеджеров dpkg, apt, aptitude, synaptic и управление репозиториями программного обеспечения.",
+  "procedure": [
+    {
+      "text": "Скачаем пакет Яндекс.Диска командой wget https://repo.yandex.ru/yandex-disk/yandex-disk_latest_amd64.deb, как показано на рисунке 1.",
+      "images": [{"number": 1, "src": "images/1.png", "caption": "Рисунок 1 — Скачивание wget"}]
+    },
+    {
+      "text": "Проверим информацию о пакете командой dpkg -I yandex-disk_latest_amd64.deb, как показано на рисунке 2.",
+      "images": [{"number": 2, "src": "images/2.png", "caption": "Рисунок 2 — dpkg -I информация"}]
+    },
+    {
+      "text": "Установим пакет командой sudo dpkg -i yandex-disk_latest_amd64.deb, как показано на рисунке 3.",
+      "images": [{"number": 3, "src": "images/3.png", "caption": "Рисунок 3 — dpkg -i установка"}]
+    },
+    {
+      "text": "Просмотрим список установленных пакетов командой dpkg -l | grep yandex, как показано на рисунке 4.",
+      "images": [{"number": 4, "src": "images/4.png", "caption": "Рисунок 4 — dpkg -l список"}]
+    },
+    {
+      "text": "Удалим пакет с конфигурациями командой sudo dpkg -P yandex-disk, как показано на рисунке 5.",
+      "images": [{"number": 5, "src": "images/5.png", "caption": "Рисунок 5 — dpkg -P удаление"}]
+    },
+    {
+      "text": "Отфильтруем пакеты по имени командой dpkg -l | grep sudo, как показано на рисунке 6.",
+      "images": [{"number": 6, "src": "images/6.png", "caption": "Рисунок 6 — Фильтрация grep"}]
+    },
+    {
+      "text": "Получим информацию о пакете sudo командой dpkg -s sudo, как показано на рисунке 7.",
+      "images": [{"number": 7, "src": "images/7.png", "caption": "Рисунок 7 — dpkg -s sudo"}]
+    },
+    {
+      "text": "Выведем список файлов пакета coreutils командой dpkg -L coreutils, как показано на рисунке 8.",
+      "images": [{"number": 8, "src": "images/8.png", "caption": "Рисунок 8 — dpkg -L coreutils"}]
+    },
+    {
+      "text": "Найдем пакет для файла /bin/chacl командой dpkg -S /bin/chacl, как показано на рисунке 9.",
+      "images": [{"number": 9, "src": "images/9.png", "caption": "Рисунок 9 — dpkg -S поиск"}]
+    },
+    {
+      "text": "Отредактируем файл репозиториев командой sudo nano /etc/apt/sources.list и раскомментируем строки base и extended, как показано на рисунке 10.",
+      "images": [{"number": 10, "src": "images/10.png", "caption": "Рисунок 10 — sources.list"}]
+    },
+    {
+      "text": "Обновим кэш пакетов командой sudo apt update, как показано на рисунке 11.",
+      "images": [{"number": 11, "src": "images/11.png", "caption": "Рисунок 11 — apt update"}]
+    },
+    {
+      "text": "Просмотрим доступные обновления командой apt list --upgradable, как показано на рисунке 12.",
+      "images": [{"number": 12, "src": "images/12.png", "caption": "Рисунок 12 — Список обновлений"}]
+    },
+    {
+      "text": "Установим apt-file командой sudo apt install apt-file, как показано на рисунке 13.",
+      "images": [{"number": 13, "src": "images/13.png", "caption": "Рисунок 13 — Установка apt-file"}]
+    },
+    {
+      "text": "Обновим кэш apt-file командой sudo apt-file update, как показано на рисунке 14.",
+      "images": [{"number": 14, "src": "images/14.png", "caption": "Рисунок 14 — apt-file update"}]
+    },
+    {
+      "text": "Найдем пакет с pstree командой apt-file search bin/pstree, как показано на рисунке 15.",
+      "images": [{"number": 15, "src": "images/15.png", "caption": "Рисунок 15 — Поиск pstree"}]
+    },
+    {
+      "text": "Установим VS Code командой sudo apt install code или скачав .deb с сайта Microsoft, как показано на рисунке 16.",
+      "images": [{"number": 16, "src": "images/16.png", "caption": "Рисунок 16 — Установка VS Code"}]
+    },
+    {
+      "text": "Установим расширение bash-debug через VS Code: Extensions → поиск rogalmic.bash-debug → Install, как показано на рисунке 17.",
+      "images": [{"number": 17, "src": "images/17.png", "caption": "Рисунок 17 — Установка расширения"}]
+    },
+    {
+      "text": "Откроем папку со скриптами из lab6 через File → Open Folder в VS Code, как показано на рисунке 18.",
+      "images": [{"number": 18, "src": "images/18.png", "caption": "Рисунок 18 — Открытие папки"}]
+    },
+    {
+      "text": "Создадим файл .vscode/launch.json с конфигурацией отладки bash скрипта, как показано на рисунке 19.",
+      "images": [{"number": 19, "src": "images/19.png", "caption": "Рисунок 19 — launch.json"}]
+    },
+    {
+      "text": "Поставим точку остановки на 5 строке нажатием F9 (появится красный кружок), как показано на рисунке 20.",
+      "images": [{"number": 20, "src": "images/20.png", "caption": "Рисунок 20 — Точка остановки F9"}]
+    },
+    {
+      "text": "Запустим отладку нажатием F5 и выберем Bash Debug, как показано на рисунке 21.",
+      "images": [{"number": 21, "src": "images/21.png", "caption": "Рисунок 21 — Запуск отладки F5"}]
+    },
+    {
+      "text": "Установим alien через aptitude командой sudo aptitude install alien, как показано на рисунке 22.",
+      "images": [{"number": 22, "src": "images/22.png", "caption": "Рисунок 22 — aptitude install alien"}]
+    },
+    {
+      "text": "Удалим alien командой sudo aptitude remove alien, как показано на рисунке 23.",
+      "images": [{"number": 23, "src": "images/23.png", "caption": "Рисунок 23 — aptitude remove alien"}]
+    },
+    {
+      "text": "Запустим Synaptic командой sudo synaptic и найдем htop через поиск (Ctrl+F), как показано на рисунке 24.",
+      "images": [{"number": 24, "src": "images/24.png", "caption": "Рисунок 24 — Synaptic поиск"}]
+    },
+    {
+      "text": "Установим htop через Synaptic: ПКМ на пакете → Mark for Installation → Apply, как показано на рисунке 25.",
+      "images": [{"number": 25, "src": "images/25.png", "caption": "Рисунок 25 — Synaptic установка"}]
+    },
+    {
+      "text": "Удалим htop через Synaptic (Mark for Removal → Apply) и отключим репозиторий extended закомментировав строку в sources.list, как показано на рисунке 26.",
+      "images": [{"number": 26, "src": "images/26.png", "caption": "Рисунок 26 — Synaptic удаление"}]
+    }
+  ],
+  "questions": [
+    {"question": "Какое расширение у библиотек Astra Linux?", "answer": "Библиотеки в Astra Linux имеют расширение .so (shared object). Версионированные библиотеки имеют вид .so.1, .so.2 и т.д."},
+    {"question": "Какое расширение у инсталляционных пакетов Astra Linux?", "answer": "Инсталляционные пакеты Astra Linux имеют расширение .deb (Debian package format)."},
+    {"question": "Какой утилитой создается deb-пакет?", "answer": "Для создания deb-пакетов используются утилиты dpkg-deb, debuild, или более высокоуровневые инструменты как debhelper."},
+    {"question": "Какие существуют репозитории в ALSE?", "answer": "В ALSE существуют репозитории: main (основной), update (оперативные обновления), base (включает main+update), extended (дополнительное ПО)."},
+    {"question": "В каком файле прописываются репозитории?", "answer": "Репозитории прописываются в файле /etc/apt/sources.list и файлах с расширением .list в директории /etc/apt/sources.list.d/"},
+    {"question": "Какой командой посмотреть информацию о пакете?", "answer": "Информацию о пакете можно посмотреть командами: dpkg -s <пакет> (установленный), dpkg -I <файл.deb> (файл), apt show <пакет>."},
+    {"question": "Какой менеджер пакетов устанавливает пакет и зависимые пакеты?", "answer": "Менеджер apt (apt-get) автоматически устанавливает пакет и все его зависимые пакеты из репозиториев."},
+    {"question": "Какой менеджер пакетов имеет графический интерфейс?", "answer": "Графический интерфейс имеют менеджеры пакетов Synaptic и Software Center (gnome-software)."},
+    {"question": "Какая команда позволяет создать свой репозиторий?", "answer": "Для создания собственного репозитория используется утилита reprepro или ручное создание структуры каталогов с файлами Packages и Release."}
+  ],
+  "conclusion": "В результате выполнения лабораторной работы были изучены основы управления программным обеспечением в Astra Linux. Получены навыки работы с пакетными менеджерами dpkg, apt, aptitude и Synaptic. Изучена структура deb-пакетов, ELF-файлов и система репозиториев. Приобретены практические навыки установки, удаления пакетов, управления зависимостями и отладки bash-скриптов в VS Code."
+}

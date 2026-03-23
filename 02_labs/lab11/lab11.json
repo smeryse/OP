@@ -1,0 +1,119 @@
+{
+  "lab": {
+    "number": 11,
+    "discipline": "Операционные системы",
+    "theme": "Загрузка системы и управление службами systemd"
+  },
+  "goals": "Цель работы: изучить процесс загрузки ОС Linux, работу базовых систем BIOS/UEFI, загрузчика GRUB2, подсистемы инициализации и управления службами systemd.",
+  "procedure": [
+    {
+      "text": "Перезагрузим ВМ и при загрузке нажмем E для редактирования параметров ядра, удалим параметр quiet из строки linux, как показано на рисунке 1.",
+      "images": [{"number": 1, "src": "images/1.png", "caption": "Рисунок 1 — Удаление quiet"}]
+    },
+    {
+      "text": "Отредактируем /etc/default/grub командой sudo nano /etc/default/grub: GRUB_CMDLINE_LINUX_DEFAULT=\"parsec.max_ilev=63 net.ifnames=0\" и GRUB_TIMEOUT=7, как показано на рисунке 2.",
+      "images": [{"number": 2, "src": "images/2.png", "caption": "Рисунок 2 — Редактирование grub"}]
+    },
+    {
+      "text": "Применим конфигурацию GRUB командой sudo update-grub и перезагрузимся для проверки, как показано на рисунке 3.",
+      "images": [{"number": 3, "src": "images/3.png", "caption": "Рисунок 3 — update-grub"}]
+    },
+    {
+      "text": "Выведем целевое состояние по умолчанию командой systemctl get-default, как показано на рисунке 4.",
+      "images": [{"number": 4, "src": "images/4.png", "caption": "Рисунок 4 — get-default"}]
+    },
+    {
+      "text": "Перезагрузимся через systemctl командой sudo systemctl reboot или сменим target через sudo systemctl isolate multi-user.target, как показано на рисунке 5.",
+      "images": [{"number": 5, "src": "images/5.png", "caption": "Рисунок 5 — isolate target"}]
+    },
+    {
+      "text": "Выведем сообщения ядра командой dmesg | less или journalctl -k, как показано на рисунке 6.",
+      "images": [{"number": 6, "src": "images/6.png", "caption": "Рисунок 6 — dmesg вывод"}]
+    },
+    {
+      "text": "Создадим службу fly-message-monitor.service: sudo nano /etc/systemd/system/fly-message-monitor.service с ExecStart=/usr/local/bin/fly-msg-monitor.sh, как показано на рисунке 7.",
+      "images": [{"number": 7, "src": "images/7.png", "caption": "Рисунок 7 — Создание службы"}]
+    },
+    {
+      "text": "Создадим службу resource-demanding1.service с CPUAccounting=true и CPUQuota=50% в секции [Service], как показано на рисунке 8.",
+      "images": [{"number": 8, "src": "images/8.png", "caption": "Рисунок 8 — resource-demanding1.service"}]
+    },
+    {
+      "text": "Создадим службу resource-demanding2.service аналогично, но с запуском на втором CPU через Affinity=1, как показано на рисунке 9.",
+      "images": [{"number": 9, "src": "images/9.png", "caption": "Рисунок 9 — resource-demanding2.service"}]
+    },
+    {
+      "text": "Создадим скрипт мониторинга CPU: sudo nano /usr/local/bin/cpu_usage.sh с пороговыми значениями 85% и 95%, как показано на рисунке 10.",
+      "images": [{"number": 10, "src": "images/10.png", "caption": "Рисунок 10 — cpu_usage.sh"}]
+    },
+    {
+      "text": "Создадим службу cpu-monitor.service с After=fly-message-monitor.service и WantedBy=graphical.target, как показано на рисунке 11.",
+      "images": [{"number": 11, "src": "images/11.png", "caption": "Рисунок 11 — cpu-monitor.service"}]
+    },
+    {
+      "text": "Выведем содержимое службы командой systemctl cat cpu-monitor.service, как показано на рисунке 12.",
+      "images": [{"number": 12, "src": "images/12.png", "caption": "Рисунок 12 — systemctl cat"}]
+    },
+    {
+      "text": "Отредактируем службу через systemctl edit cpu-monitor.service и добавим After=fly-message-monitor.service, как показано на рисунке 13.",
+      "images": [{"number": 13, "src": "images/13.png", "caption": "Рисунок 13 — systemctl edit"}]
+    },
+    {
+      "text": "Запустим службу командой sudo systemctl start cpu-monitor.service и проверим статус systemctl status cpu-monitor.service, как показано на рисунке 14.",
+      "images": [{"number": 14, "src": "images/14.png", "caption": "Рисунок 14 — Запуск службы"}]
+    },
+    {
+      "text": "Перейдем в multi-user.target командой sudo systemctl isolate multi-user.target и проверим что службы не активны, как показано на рисунке 15.",
+      "images": [{"number": 15, "src": "images/15.png", "caption": "Рисунок 15 — multi-user.target"}]
+    },
+    {
+      "text": "Перейдем в graphical.target командой sudo systemctl isolate graphical.target и проверим что службы запустились, как показано на рисунке 16.",
+      "images": [{"number": 16, "src": "images/16.png", "caption": "Рисунок 16 — graphical.target"}]
+    },
+    {
+      "text": "Запустим службу resource-demanding1 командой sudo systemctl start resource-demanding1.service, как показано на рисунке 17.",
+      "images": [{"number": 17, "src": "images/17.png", "caption": "Рисунок 17 — Запуск службы 1"}]
+    },
+    {
+      "text": "Запустим resource-demanding2.service и проверим сообщения мониторинга в /tmp/fly-msg/msg.txt, как показано на рисунке 18.",
+      "images": [{"number": 18, "src": "images/18.png", "caption": "Рисунок 18 — Запуск службы 2"}]
+    },
+    {
+      "text": "Изменим CPUQuota службы через systemctl set-property resource-demanding1.service CPUQuota=90%, как показано на рисунке 19.",
+      "images": [{"number": 19, "src": "images/19.png", "caption": "Рисунок 19 — set-property 90%"}]
+    },
+    {
+      "text": "Изменим CPUQuota на 80% командой systemctl set-property resource-demanding1.service CPUQuota=80%, как показано на рисунке 20.",
+      "images": [{"number": 20, "src": "images/20.png", "caption": "Рисунок 20 — set-property 80%"}]
+    },
+    {
+      "text": "Выведем дерево контрольных групп командой systemd-cgls и найдем resource-demanding1.service, как показано на рисунке 21.",
+      "images": [{"number": 21, "src": "images/21.png", "caption": "Рисунок 21 — systemd-cgls"}]
+    },
+    {
+      "text": "Выведем все модули командой systemctl list-units --all, как показано на рисунке 22.",
+      "images": [{"number": 22, "src": "images/22.png", "caption": "Рисунок 22 — list-units --all"}]
+    },
+    {
+      "text": "Выведем все службы командой systemctl list-units --type=service --all, как показано на рисунке 23.",
+      "images": [{"number": 23, "src": "images/23.png", "caption": "Рисунок 23 — list-units --type=service"}]
+    },
+    {
+      "text": "Запустим мониторинг событий в реальном времени командой journalctl -f -u resource-demanding1.service, как показано на рисунке 24.",
+      "images": [{"number": 24, "src": "images/24.png", "caption": "Рисунок 24 — journalctl -f"}]
+    }
+  ],
+  "questions": [
+    {"question": "Какое сочетание технологий рекомендуется использовать в современных системах?", "answer": "В современных системах рекомендуется использовать связку UEFI + GPT + systemd для загрузки и управления системой."},
+    {"question": "Расположите пункты запуска от включения до запуска ядра: POST, загрузчик, ядро и т.д.", "answer": "Порядок: b) Тестирование оборудования → c) Поиск загрузочного устройства → e) Запуск загрузчика I этапа → g) Запуск загрузчика II этапа → f) Вывод загрузочного меню → d) Загрузка ядра → h) Запуск ядра."},
+    {"question": "Расположите пункты запуска от запуска ядра до загрузки системы.", "answer": "Порядок: a) Загрузка модулей с RAM-диска → c) Инициализация ядра → e) Монтирование корневого устройства → b) Монтирование initramfs → f) Запуск /init → d) Запуск systemd → g) Запуск модулей systemd."},
+    {"question": "В каком файле следует выполнять настройки GRUB?", "answer": "Настройки GRUB выполняются в файле /etc/default/grub. После изменений требуется выполнить update-grub для применения."},
+    {"question": "Какая команда применит новую конфигурацию GRUB?", "answer": "Команда update-grub (или grub-mkconfig -o /boot/grub/grub.cfg) применяет новую конфигурацию GRUB."},
+    {"question": "Какого модуля systemd не существует?", "answer": "В systemd не существует модулей типа .module или .driver. Существуют: .service, .target, .socket, .mount, .device, .slice, .timer, .path, .automount."},
+    {"question": "Какие целевые состояния соответствуют уровням загрузки runlevel?", "answer": "runlevel 0 → poweroff.target, 1 → rescue.target, 2,3,4 → multi-user.target, 5 → graphical.target, 6 → reboot.target."},
+    {"question": "Какие секции присутствуют в конфигурационном файле службы systemd?", "answer": "Основные секции: [Unit] (описание, зависимости), [Service] (тип, ExecStart, Restart), [Install] (WantedBy, RequiredBy)."},
+    {"question": "Какой командой отслеживать события systemd в реальном времени?", "answer": "Команда journalctl -f отслеживает события в реальном времени. Для конкретной службы: journalctl -f -u <служба>."},
+    {"question": "Какая команда выведет список всех служб и их состояния?", "answer": "Команда systemctl list-units --type=service --all выводит список всех служб и их состояния."}
+  ],
+  "conclusion": "В результате выполнения лабораторной работы был изучен процесс загрузки ОС Linux от включения питания до запуска системы. Получены навыки работы с загрузчиком GRUB2: редактирование параметров загрузки, настройка таймаута. Изучена подсистема systemd для управления службами, контрольными группами и целевыми состояниями. Приобретены практические навыки создания служб, мониторинга событий и диагностики проблем загрузки."
+}

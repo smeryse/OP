@@ -1,0 +1,40 @@
+<!-- Цель работы -->
+<p style="font-size: 14pt; text-align: justify; margin-bottom: 28pt; text-indent: 1.25cm; line-height: 1.5;">
+    <span style="font-weight: bold; margin-right: 5pt;">Цель работы:</span> {{ goals }}
+</p>
+
+<!-- Ход работы -->
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Ход работы:</div>
+
+{% for step in procedure %}
+    {% if step.text %}
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        {{ step.text }}
+    </div>
+    {% endif %}
+    
+    {% if step.images %}
+        {% for img in step.images %}
+            {% include 'image.html' with context %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+<!-- Контрольные вопросы (если есть) -->
+{% if questions %}
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Контрольные вопросы:</div>
+{% for q in questions %}
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос {{ loop.index }}:</span> {{ q.question }}
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> {{ q.answer }}
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- Вывод -->
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Вывод:</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+    {{ conclusion }}
+</div>

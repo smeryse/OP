@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа</title>
+    
+</head>
+<body style="font-family: 'Times New Roman', Times, serif; background-color: white; margin: 0; padding: 0; display: flex; justify-content: center;">
+    <div style="width: 210mm; min-height: 297mm; background-color: white; padding: 30mm 15mm 20mm 30mm; margin: 0 auto;">
+        
+        
+        <!-- Шапка документа -->
+<div style="font-size: 12pt; text-align: center; line-height: 1.2; white-space: nowrap; width: 100%;">
+    МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ
+</div>
+
+<div style="font-size: 12pt; text-align: center; font-weight: normal; line-height: 1; margin-bottom: 16pt;">
+    Федеральное государственное бюджетное образовательное учреждение<br>
+    высшего образования<br>
+    <strong style="font-size: 14pt; font-weight: bold; text-transform: uppercase;">«КУБАНСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</strong><br>
+    <strong style="font-size: 14pt; font-weight: bold;">(ФГБОУ ВО «КубГУ»)</strong>
+</div>
+
+<div style="font-size: 14pt; text-align: center; font-weight: bold; line-height: 1;">
+    Факультет компьютерных технологий и прикладной математики
+</div>
+
+<div style="font-size: 14pt; text-align: center; font-weight: bold; margin-bottom: 70pt; line-height: 1">
+    Кафедра вычислительных технологий
+</div>
+
+<!-- Название работы -->
+<div style="font-size: 14pt; font-weight: bold; text-align: center; line-height: 1.2; margin: 25pt 0 0pt; text-transform: uppercase;">
+    ЛАБОРАТОРНАЯ РАБОТА №6
+</div>
+
+<div style="font-size: 14pt; text-align: center; margin: 2pt 0; font-weight: bold; line-height: 1.2;">
+    Дисциплина: Операционные системы
+</div>
+
+<div style="font-size: 14pt; margin: 2pt 0 90pt; line-height: 1.15; font-weight: bold; text-align: center">
+    Тема: «Работа со сценариями Bash» 
+</div>
+        <!-- Информация о студенте -->
+<div style="margin: 0 auto; font-size: 14pt; line-height: 1.4; margin-top: 20pt; margin-bottom: 29pt;">
+    
+    
+    <p style="margin: 2pt 0; text-align: left; margin-bottom: 29pt;">
+        Работу выполнил: _____________________________ Я. Ю. Никуличев
+    </p>
+    
+    
+    
+    <p style="margin: 2pt 0; text-align: left; line-height: 1.2; margin-bottom: 14pt;">
+        Направление подготовки: 02.03.02 
+        
+        <u style="text-decoration: underline; text-underline-offset: 2pt;">Фундаментальная информатика и информационные технологии</u>
+        
+    </p>
+    
+    
+    
+    <p style="margin: 2pt 0; text-align: left; line-height: 1.2; margin-bottom: 28pt;">
+        Направленность (профиль): 
+        
+            <u style="text-decoration: underline; text-underline-offset: 2pt;">Математическое и программное обеспечение компьютерных технологий</u>
+        
+    </p>
+    
+    
+    
+    <p style="text-align: left;">
+        Старший преподаватель: ___________________________ Е. А. Нигодин
+    </p>
+    
+    
+</div>
+
+<!-- Город и год -->
+<div style="text-align: center; font-size: 14pt; margin-bottom: 40pt; line-height: 1.7;">
+    Краснодар<br>
+    2026
+</div>
+        <!-- Цель работы -->
+<p style="font-size: 14pt; text-align: justify; margin-bottom: 28pt; text-indent: 1.25cm; line-height: 1.5;">
+    <span style="font-weight: bold; margin-right: 5pt;">Цель работы:</span> Цель работы: изучить разницу между PowerShell, CMD и инструментами автоматизации для Linux, научиться создавать и запускать bash-скрипты, работать с переменными, циклами, функциями и кодами возврата.
+</p>
+
+<!-- Ход работы -->
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Ход работы:</div>
+
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Для создания скрипта приветствия откроим текстовый редактор nano командой nano hello.sh и добавим строку echo "Привет, $USER!", как показано на рисунке 1.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 1 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 1 – Рисунок 1 — Создание hello.sh в nano
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Чтобы сделать скрипт исполняемым, установим права на выполнение командой chmod +x hello.sh, как показано на рисунке 2.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 2 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 2 – Рисунок 2 — Установка прав chmod +x
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выполним скрипт напрямую через ./hello.sh или передадим интерпретатору bash командой bash hello.sh, как показано на рисунке 3.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 3 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 3 – Рисунок 3 — Запуск скрипта
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Для генерации пароля зададим переменную цифр командой DIGITS="0123456789", как показано на рисунке 4.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 4 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 4 – Рисунок 4 — Переменная DIGITS
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Зададим переменную специальных символов командой SPECIALS="+=_.~|!@#%^", как показано на рисунке 5.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 5 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 5 – Рисунок 5 — Переменная SPECIALS
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Создадим полный алфавит для сложного пароля командой ALPHABET="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+=_.~|!@#%^", как показано на рисунке 6.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 6 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 6 – Рисунок 6 — Полный алфавит
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем алфавит для проверки командой echo $ALPHABET, как показано на рисунке 7.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 7 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 7 – Рисунок 7 — Проверка алфавита
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Вычислим длину алфавита для легкого пароля (без спецсимволов) командой LEN=${#ALPHABET}, как показано на рисунке 8.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 8 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 8 – Рисунок 8 — Длина алфавита
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Сгенерируем случайную позицию символа командой POS=$((RANDOM % LEN)), как показано на рисунке 9.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 9 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 9 – Рисунок 9 — Случайная позиция
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Вырежем символ из алфавита по позиции командой CHAR=${ALPHABET:$POS:1}, как показано на рисунке 10.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 10 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 10 – Рисунок 10 — Вырезание символа
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        В цикле for сгенерируем пароль из 14 символов, добавляя каждый символ командой PASSWORD="$PASSWORD$CHAR", как показано на рисунке 11.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 11 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 11 – Рисунок 11 — Генерация в цикле
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем сгенерированный легкий пароль командой echo "Легкий пароль: $PASSWORD", как показано на рисунке 12.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 12 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="images/12.png" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 12 – Рисунок 12 — Вывод пароля
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Создадим полный скрипт генератора паролей password_gen.sh, объединяющий генерацию простого и сложного пароля, как показано на рисунке 13.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 13 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="images/13.png" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 13 – Рисунок 13 — Скрипт генератора
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Запустим генератор паролей 9 раз в цикле для вывода 9 пар паролей командой for i in {1..9}; do ./password_gen.sh; done, как показано на рисунке 14.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 14 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="images/14.png" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 14 – Рисунок 14 — 9 пар паролей
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Создадим скрипт инсталлятора installer.sh с проверкой на root через переменную $UID, как показано на рисунке 15.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 15 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 15 – Рисунок 15 — Скрипт installer.sh
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Добавим проверку: если $UID не равен 0, выведем ошибку и завершим скрипт командой exit 1, как показано на рисунке 16.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 16 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 16 – Рисунок 16 — Проверка UID
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Для пользователя root добавим установку пакетов командой apt install -y git curl wget jq, как показано на рисунке 17.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 17 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 17 – Рисунок 17 — Установка пакетов apt
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Создадим скрипт args.sh для работы с аргументами командной строки, как показано на рисунке 18.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 18 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 18 – Рисунок 18 — Скрипт args.sh
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем имя скрипта через переменную $0 командой echo "Скрипт: $0", как показано на рисунке 19.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 19 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 19 – Рисунок 19 — Вывод $0
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем первый и второй аргументы командой echo "Арг1: $1, Арг2: $2", как показано на рисунке 20.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 20 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 20 – Рисунок 20 — Аргументы $1 $2
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем последний аргумент через ${!#} командой echo "Последний: ${!#}", как показано на рисунке 21.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 21 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 21 – Рисунок 21 — Последний аргумент
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем все аргументы одной строкой через $* командой echo "Все: $*", как показано на рисунке 22.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 22 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 22 – Рисунок 22 — Все аргументы $*
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Выведем каждый аргумент отдельно в цикле for arg in "$@"; do echo "$arg"; done, как показано на рисунке 23.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 23 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 23 – Рисунок 23 — Цикл по $@
+    </div>
+    
+</div>
+        
+    
+
+    
+    <div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+        Создадим скрипт select_string.sh для поиска строки в файлах с использованием find и grep, как показано на рисунке 24.
+    </div>
+    
+    
+    
+        
+            <!-- Рисунок 24 -->
+<div style="margin: 0 0 20pt 0; text-align: center;">  <!-- внешний отступ снизу 15pt -->
+    
+    <!-- Картинка -->
+    <div style="margin-bottom: 0pt;">  <!-- маленький отступ между картинкой и подписью -->
+        
+        <img src="data:image/png;base64,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" 
+             alt=""
+             style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
+        
+    </div>
+    
+    <!-- Подпись -->
+    <div style="font-size: 14pt; font-style: normal; text-align: center;">
+        Рисунок 24 – Рисунок 24 — Скрипт select_string.sh
+    </div>
+    
+</div>
+        
+    
+
+
+<!-- Контрольные вопросы (если есть) -->
+
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Контрольные вопросы:</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 1:</span> Какой командой можно посмотреть информацию о типе команды?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Для просмотра информации о типе команды используется команда 'type <имя_команды>'. Она показывает, является ли команда встроенной в оболочку, алиасом, функцией или внешним исполняемым файлом.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 2:</span> Какая нотация используется для глобальных переменных?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> В Bash глобальные переменные (переменные окружения) обычно записываются заглавными буквами, например PATH, HOME, USER. Это соглашение об именовании, а не требование языка.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 3:</span> Какие кавычки позволяют подставить значение переменной?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Двойные кавычки позволяют подставлять значения переменных. При использовании двойных кавычек символ $ интерпретируется и происходит подстановка значения переменной.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 4:</span> Какие кавычки экранируют специальный символ доллара $, не позволяя подставлять значения переменных?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Одинарные кавычки (апострофы) экранируют все специальные символы, включая $. Внутри одинарных кавычек подстановка переменных не выполняется, текст передается буквально.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 5:</span> Какие конструкции языка позволяют повторить блок кода несколько раз в зависимости от условия?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Для повторения блока кода используются циклы: for (когда известно количество итераций), while (пока условие истинно), until (пока условие ложно).
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 6:</span> Какой конструкцией языка можно выполнить ветвление кода?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Ветвление кода выполняется конструкцией if/then/elif/else/fi. Также можно использовать case для множественного выбора.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 7:</span> Как в языке Bash можно получить значение позиционных переменных?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Позиционные переменные доступны через $1, $2, $3 и т.д. (аргументы командной строки). $0 — имя скрипта, $@ — все аргументы, $# — количество аргументов.
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 8:</span> Какой командой можно очистить переменную?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Для очистки переменной используется команда unset <имя_переменной>. Также можно присвоить пустое значение: variable="".
+</div>
+
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 10pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Вопрос 9:</span> С помощью какой специальной переменной можно получить значения всех аргументов?
+</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; line-height: 1.5;">
+    <span style="font-weight: bold;">Ответ:</span> Все аргументы можно получить через $@ (каждый аргумент как отдельное слово) или $* (все аргументы как одно слово).
+</div>
+
+
+
+<!-- Вывод -->
+<div style="font-size: 14pt; font-weight: bold; margin: 20pt 0 8pt; text-align: center;">Вывод:</div>
+<div style="font-size: 14pt; text-align: justify; margin-bottom: 15pt; text-indent: 1.25cm; line-height: 1.5;">
+    В результате выполнения лабораторной работы были изучены основы создания и выполнения сценариев Bash. Получены навыки работы с переменными, математическими операциями, циклами, функциями и кодами возврата. Изучены различия между Bash, CMD и PowerShell. Приобретены практические навыки автоматизации задач с помощью bash-скриптов.
+</div>
+        
+    </div>
+</body>
+</html>

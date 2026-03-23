@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет по лабораторной работе №1</title>
+    <style>
+        /* Общие стили под ГОСТ */
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 14pt;
+            line-height: 1.5;
+            margin: 2cm 2cm 2cm 3cm; /* Отступы как в Ворде */
+            text-align: justify;
+        }
+        
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20pt;
+            margin-bottom: 20pt;
+        }
+        
+        h2 {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: left;
+            margin-top: 15pt;
+            margin-bottom: 10pt;
+        }
+        
+        /* Верхняя часть с министерством */
+        .ministry {
+            font-size: 12pt;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin-bottom: 5pt;
+        }
+        
+        .university {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 5pt;
+            margin-bottom: 5pt;
+        }
+        
+        .faculty {
+            font-size: 14pt;
+            font-weight: normal;
+            text-align: center;
+            margin-top: 5pt;
+            margin-bottom: 5pt;
+        }
+        
+        .department {
+            font-size: 14pt;
+            font-weight: normal;
+            text-align: center;
+            margin-top: 5pt;
+            margin-bottom: 10pt;
+        }
+        
+        .title {
+            font-size: 20pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20pt;
+            margin-bottom: 10pt;
+        }
+        
+        .subtitle {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0pt;
+            margin-bottom: 20pt;
+        }
+        
+        .discipline {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10pt;
+            margin-bottom: 5pt;
+        }
+        
+        .theme {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0pt;
+            margin-bottom: 30pt;
+        }
+        
+        /* Блок с исполнителем и преподавателем */
+        .signature-block {
+            width: 100%;
+            margin-top: 20pt;
+            margin-bottom: 30pt;
+        }
+        
+        .signature-row {
+            display: flex;
+            margin-bottom: 10pt;
+            align-items: baseline;
+        }
+        
+        .signature-label {
+            width: 180px;
+            font-weight: normal;
+        }
+        
+        .signature-line {
+            flex: 1;
+            border-bottom: 1px solid black;
+            margin-left: 5px;
+            margin-right: 10px;
+            height: 18px;
+        }
+        
+        .signature-name {
+            min-width: 200px;
+        }
+        
+        .underline {
+            text-decoration: underline;
+            padding: 0 5px;
+        }
+        
+        /* Город и год */
+        .city-year {
+            text-align: center;
+            font-size: 14pt;
+            margin-top: 30pt;
+            margin-bottom: 30pt;
+        }
+        
+        /* Цель работы */
+        .goal {
+            margin-top: 20pt;
+            margin-bottom: 20pt;
+        }
+        
+        .goal p {
+            margin: 0;
+        }
+        
+        /* Ход работы */
+        .work-progress {
+            margin-top: 20pt;
+        }
+        
+        .work-item {
+            margin-bottom: 30pt;
+        }
+        
+        .work-text {
+            margin-bottom: 5pt;
+        }
+        
+        /* Изображения */
+        .figure {
+            margin: 20pt 0;
+            text-align: center;
+        }
+        
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        
+        .figcaption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5pt;
+        }
+        
+        /* Практические задания */
+        .task-section {
+            margin-top: 30pt;
+        }
+        
+        /* Ответы на вопросы */
+        .questions {
+            margin-top: 30pt;
+        }
+        
+        .question-item {
+            margin-bottom: 15pt;
+        }
+        
+        .question-number {
+            font-weight: bold;
+        }
+        
+        /* Вывод */
+        .conclusion {
+            margin-top: 30pt;
+            margin-bottom: 30pt;
+        }
+        
+        /* Таблицы */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15pt 0;
+        }
+        
+        td, th {
+            border: 1px solid black;
+            padding: 5pt;
+            text-align: left;
+        }
+        
+        th {
+            font-weight: bold;
+        }
+        
+        /* Команды терминала */
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 5pt;
+            border: 1px solid #ccc;
+            margin: 5pt 0;
+        }
+        
+        /* Для подстановки переменных */
+        .placeholder {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        
+        /* Страница с подписями */
+        .signature-page {
+            margin-top: 50pt;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка документа -->
+<div class="ministry">МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ</div>
+
+<div class="university">Федеральное государственное бюджетное образовательное учреждение</div>
+<div class="university">высшего образования</div>
+
+<div class="university">«КУБАНСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</div>
+<div class="university">(ФГБОУ ВО «КубГУ»)</div>
+
+<div class="faculty">Факультет компьютерных технологий и прикладной математики</div>
+<div class="department">Кафедра вычислительных технологий</div>
+
+<div class="title">ЛАБОРАТОРНАЯ РАБОТА №{{lab_number}}</div>
+<div class="discipline">Дисциплина: {{discipline}}</div>
+<div class="theme">Тема: «{{lab_theme}}»</div>
+
+<!-- Блок с исполнителем и преподавателем -->
+<div class="signature-block">
+    <div class="signature-row">
+        <span class="signature-label">Работу выполнил:</span>
+        <span class="signature-line"></span>
+        <span class="signature-name">{{student_name}}</span>
+    </div>
+    
+    <div class="signature-row">
+        <span class="signature-label">Направление подготовки:</span>
+        <span class="underline">{{direction}}</span>
+    </div>
+    
+    <div class="signature-row">
+        <span class="signature-label">Направленность (профиль):</span>
+        <span class="underline">{{profile}}</span>
+    </div>
+    
+    <div class="signature-row">
+        <span class="signature-label">Преподаватель:</span>
+        <span class="signature-line"></span>
+        <span class="signature-name">{{teacher_name}}</span>
+    </div>
+</div>
+
+<!-- Город и год -->
+<div class="city-year">{{city}} {{year}}</div>
+
+<!-- Цель работы -->
+<div class="goal">
+    <h2>Цель работы:</h2>
+    <p>{{goal}}</p>
+</div>
+
+<!-- Ход работы -->
+<div class="work-progress">
+    <h2>Ход работы:</h2>
+    
+    <!-- Здесь будут повторяться элементы хода работы -->
+    <div class="work-item">
+        <div class="work-text">{{work_step_1_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_1_image}}" alt="Рис. 1">
+            <div class="figcaption">Рис. 1 — {{work_step_1_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_2_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_2_image}}" alt="Рис. 2">
+            <div class="figcaption">Рис. 2 — {{work_step_2_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_3_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_3_image}}" alt="Рис. 3">
+            <div class="figcaption">Рис. 3 — {{work_step_3_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_4_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_4_image}}" alt="Рис. 4">
+            <div class="figcaption">Рисунок 4 — {{work_step_4_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_5_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_5_image}}" alt="Рис. 5">
+            <div class="figcaption">Рис. 5 — {{work_step_5_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_6_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_6_image}}" alt="Рис. 6">
+            <div class="figcaption">Рисунок 6 — {{work_step_6_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_7_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_7_image}}" alt="Рис. 7">
+            <div class="figcaption">Рис. 7 — {{work_step_7_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_8_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_8_image}}" alt="Рис. 8">
+            <div class="figcaption">Рис. 8 — {{work_step_8_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{work_step_9_text}}</div>
+        <div class="figure">
+            <img src="{{work_step_9_image}}" alt="Рис. 9">
+            <div class="figcaption">Рис. 9 — {{work_step_9_caption}}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Практические задания -->
+<div class="task-section">
+    <h2>Практические задания</h2>
+    
+    <div class="work-item">
+        <div class="work-text">{{task_1_text}}</div>
+        <div class="figure">
+            <img src="{{task_1_image}}" alt="Рис. 10">
+            <div class="figcaption">Рис. 10 — {{task_1_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{task_2_text}}</div>
+        <div class="figure">
+            <img src="{{task_2_image}}" alt="Рис. 11">
+            <div class="figcaption">Рис. 11 — {{task_2_caption}}</div>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-text">{{task_3_text}}</div>
+        <div class="figure">
+            <img src="{{task_3_image}}" alt="Рис. 12">
+            <div class="figcaption">Рис. 12 — {{task_3_caption}}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Ответы на вопросы -->
+<div class="questions">
+    <h2>Ответы на вопросы</h2>
+    
+    <div class="question-item">
+        <span class="question-number">1.</span> {{answer_1}}
+    </div>
+    
+    <div class="question-item">
+        <span class="question-number">2.</span> {{answer_2}}
+    </div>
+    
+    <div class="question-item">
+        <span class="question-number">3.</span> {{answer_3}}
+    </div>
+    
+    <div class="question-item">
+        <span class="question-number">4.</span> {{answer_4}}
+    </div>
+    
+    <div class="question-item">
+        <span class="question-number">5.</span> {{answer_5}}
+    </div>
+</div>
+
+<!-- Вывод -->
+<div class="conclusion">
+    <h2>Вывод:</h2>
+    <p>{{conclusion}}</p>
+</div>
+
+<!-- Комментарий для подстановки данных (можно удалить после заполнения) -->
+<!-- 
+    Пример заполнения переменных:
+    lab_number: 1
+    discipline: Операционные системы
+    lab_theme: Знакомство с операционной системой Linux. Установка и стартовая настройка виртуальной машины и AstraLinux SE
+    student_name: Я. Ю. Никуличев
+    direction: 02.03.02 Фундаментальная информатика и информационные технологии
+    profile: Математическое и программное обеспечение компьютерных технологий
+    teacher_name: Е. А. Нигодин
+    city: Краснодар
+    year: 2026
+    goal: Ознакомиться с ОС Linux, установить виртуальную машину Oracle VM VirtualBox, установить образ виртуальной машины Astra Linux Special Edition 1.7.3
+    conclusion: В ходе работы я развернул виртуальную машину Oracle VM VirtualBox с образом Astra Linux, изучил её основные утилиты, рабочий стол и терминал Fly.
+-->
+
+</body>
+</html>
